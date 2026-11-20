@@ -1647,7 +1647,7 @@ Item {
       // which a desktop has too. A power symbol read as shutting the machine
       // down, and a battery promised a page a desktop does not get.
       { id: "pwr", label: "Power", icon: "\uf0e7", pages: ["power"] },
-      { id: "idle", label: "Idle & Lock", icon: "\uf023", pages: ["idle"] },
+      { id: "idle", label: "Idle & Lock", icon: "\uf023", pages: ["idle", "branding"] },
       { id: "security", label: "Security", icon: "\uf132", pages: ["security"] },
       { id: "disk", label: "Storage", icon: "\uf0a0", pages: ["disk"] },
       { id: "proc", label: "Processes", icon: "\uf080", pages: ["processes"] },
@@ -1714,6 +1714,7 @@ Item {
     "apps.herdr": "Herdr",
     "apps.tmux": "Tmux",
     "apps.nvim": "Neovim",
+    "branding": "Branding",
     "omacontrol": "OmaControl settings"
   })
 
@@ -1792,6 +1793,7 @@ Item {
     case "processes": return "sections/ProcessesSection.qml"
     case "security": return "sections/SecuritySection.qml"
     case "idle": return "sections/IdleSection.qml"
+    case "branding": return "sections/BrandingSection.qml"
     case "plugins": return "sections/PluginsSection.qml"
     case "datetime": return "sections/DateTimeSection.qml"
     case "network": return "sections/NetworkSection.qml"

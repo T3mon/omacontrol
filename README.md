@@ -67,7 +67,8 @@ at on battery and plugged in.
 <a href="docs/screenshots/idle-and-lock.png"><img src="docs/screenshots/idle-and-lock.png" alt="Idle and Lock page"></a><br>
 <b>Idle & Lock</b><br>
 How long before the screensaver starts and the screen locks, and the
-animation shown at start-up and while unlocking.
+animation shown at start-up and while unlocking. Plus branding: the text or
+image on the screensaver and the About screen.
 </td>
 </tr>
 <tr>
