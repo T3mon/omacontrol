@@ -1076,7 +1076,7 @@ Item {
     case "apps.tmux": return state.tmux === undefined || state.tmux.installed !== false
     case "apps.nvim": return state.nvim === undefined || state.nvim.installed !== false
     case "apps.herdr": return state.herdr === undefined || state.herdr.installed !== false
-    default: return true
+    default: return pageTitles[id] !== undefined
     }
   }
 
@@ -1642,17 +1642,6 @@ Item {
       { id: "net", label: "Network", icon: "\uf1eb", pages: ["network"] },
       { id: "bt", label: "Bluetooth", icon: "\uf293", pages: ["bluetooth"] }
     ] },
-    { title: "Experience", items: [
-      { id: "look", label: "Appearance", icon: "\uf1fc", pages: ["theme", "font", "wallpaper", "branding"] },
-      { id: "fx", label: "Effects", icon: "\uf0d0", pages: ["effects"] },
-      { id: "bar", label: "Bar", icon: "\uf0c9", pages: ["bar"] },
-      { id: "wm", label: "Windows", icon: "\uf2d0", pages: ["windows", "layout", "groups"] },
-      { id: "ws", label: "Workspaces", icon: "\uf00a", pages: ["workspaces"] },
-      { id: "kb", label: "Keyboard", icon: "\uf11c", pages: ["keyboard", "bindings", "compose"] },
-      { id: "ptr", label: "Mouse & touchpad", icon: "\uf245", pages: ["pointer"] },
-      { id: "sound", label: "Sound", icon: "\uf028", pages: ["audio"] },
-      { id: "displays", label: "Displays", icon: "\uf108", pages: ["displays"] }
-    ] },
     { title: "System", items: [
       // A bolt: the page is the battery and the profile the machine runs at,
       // which a desktop has too. A power symbol read as shutting the machine
@@ -1710,23 +1699,6 @@ Item {
     "overview": "Overview",
     "network": "Network",
     "bluetooth": "Bluetooth",
-    "audio": "Audio",
-    "displays": "Displays",
-    "bar": "Bar",
-    "effects": "Effects",
-    // "General", not "Windows": the rail is already called Windows, and a page
-    // that repeats its rail's name tells the reader nothing — the crumb read
-    // "WINDOWS / Windows". General is what it is: the settings that are about
-    // windows in general rather than about the layout, the workspaces or the
-    // groups beside it.
-    "windows": "General",
-    "layout": "Layout",
-    "workspaces": "Workspaces",
-    "groups": "Groups",
-    "keyboard": "Keyboard",
-    "bindings": "Keybindings",
-    "compose": "Compose Keys",
-    "pointer": "Mouse & Touchpad",
     "power": "Power",
     "idle": "Idle & Lock",
     "security": "Security",
@@ -1742,10 +1714,6 @@ Item {
     "apps.herdr": "Herdr",
     "apps.tmux": "Tmux",
     "apps.nvim": "Neovim",
-    "theme": "Theme",
-    "font": "Font",
-    "wallpaper": "Wallpaper",
-    "branding": "Branding",
     "omacontrol": "OmaControl settings"
   })
 
@@ -1817,34 +1785,18 @@ Item {
   function sectionSource(id) {
     switch (id) {
     case "overview": return "sections/OverviewSection.qml"
-    case "theme": return "sections/ThemeSection.qml"
-    case "font": return "sections/FontSection.qml"
-    case "wallpaper": return "sections/WallpaperSection.qml"
-    case "branding": return "sections/BrandingSection.qml"
     case "packages": return "sections/PackagesSection.qml"
     case "usage": return "sections/UsageSection.qml"
     case "about": return "sections/AboutSection.qml"
     case "disk": return "sections/DiskSection.qml"
     case "processes": return "sections/ProcessesSection.qml"
     case "security": return "sections/SecuritySection.qml"
-    case "bar": return "sections/BarSection.qml"
-    case "workspaces": return "sections/WorkspacesSection.qml"
-    case "windows": return "sections/WindowsSection.qml"
-    case "keyboard": return "sections/KeyboardSection.qml"
-    case "bindings": return "sections/BindingsSection.qml"
-    case "pointer": return "sections/PointerSection.qml"
-    case "displays": return "sections/DisplaysSection.qml"
     case "idle": return "sections/IdleSection.qml"
     case "plugins": return "sections/PluginsSection.qml"
-    case "compose": return "sections/ComposeSection.qml"
     case "datetime": return "sections/DateTimeSection.qml"
     case "network": return "sections/NetworkSection.qml"
     case "bluetooth": return "sections/BluetoothSection.qml"
-    case "layout": return "sections/LayoutSection.qml"
-    case "effects": return "sections/EffectsSection.qml"
-    case "groups": return "sections/GroupsSection.qml"
     case "power": return "sections/PowerSection.qml"
-    case "audio": return "sections/AudioSection.qml"
     case "apps.list": return "sections/AppsSection.qml"
     case "apps.defaults": return "sections/DefaultsSection.qml"
     case "apps.tmux": return "sections/TmuxSection.qml"
@@ -1854,7 +1806,7 @@ Item {
     // cases to learn which file holds which page, and a page reachable only
     // through the default is a page it cannot see.
     case "apps.herdr": return "sections/HerdrSection.qml"
-    default: return "sections/HerdrSection.qml"
+    default: return "sections/OverviewSection.qml"
     }
   }
 

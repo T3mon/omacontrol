@@ -1,25 +1,20 @@
 # OmaControl
 
-One window for every Omarchy setting and the machine underneath it: Hyprland,
-keybindings and themes, alongside Wi-Fi, Bluetooth, disks, processes and
-packages.
+A trimmed fork of [OmaControl](https://github.com/twiking/omacontrol) without
+the Experience pages: one window for the machine underneath Omarchy — Wi-Fi,
+Bluetooth, power, security, disks, processes, apps and packages.
 
 <p align="center"><img src="preview.png" alt="The OmaControl window, open on the Overview page" width="600"></p>
 
-Omarchy's settings live in a dozen places: `shell.json`, the Hyprland config,
-each application's own config, `~/.XCompose`, and a long list of commands.
-OmaControl puts them in one window, alongside the live state of the machine —
-audio, network, bluetooth, power, disks and processes — so a few widgets can
-leave the bar if you want the space for others.
+Appearance, effects, bar, windows, workspaces, keyboard, mouse, sound and
+displays are left to Omarchy itself.
 
-- **Find anything.** Type "blur" or "border" and every setting that touches it
-  appears with its current value, whatever file it normally lives in.
+- **Find anything.** Type to see every setting that matches, with its current
+  value, whatever file it normally lives in.
 - **Undo.** Anything you changed is marked, and goes back one setting at a time
   or all at once.
 - **Keyboard first.** Arrows or `j`/`k` move, `h`/`l` change a value,
   `Alt`+arrows change page, `/` searches, `Esc` closes.
-
-<p align="center"><img src="docs/screenshots/search.png" alt="Searching for border: matching settings on the Windows and Configs pages, changed ones marked with a reset link" width="600"></p>
 
 ## Everything in the menu
 
@@ -53,84 +48,6 @@ test, pick the Wi-Fi band and DNS provider, and see the hosts file.
 Connected devices with their battery, the ones you have paired, and
 everything nearby. Connect, pair and forget, and let other devices find
 this one.
-</td>
-<td width="50%" valign="top"></td>
-</tr>
-</table>
-
-### Experience
-
-<table>
-<tr>
-<td width="50%" valign="top">
-<a href="docs/screenshots/appearance.png"><img src="docs/screenshots/appearance.png" alt="Appearance page, on the theme picker"></a><br>
-<b>Appearance</b><br>
-Theme, font and text size, and wallpaper, each picked from previews. Plus
-branding: the text or image on the screensaver and the About screen.
-</td>
-<td width="50%" valign="top">
-<a href="docs/screenshots/effects.png"><img src="docs/screenshots/effects.png" alt="Effects page"></a><br>
-<b>Effects</b><br>
-Blur, shadows and the glow around the focused window, down to every knob
-Hyprland has for them.
-</td>
-</tr>
-<tr>
-<td width="50%" valign="top">
-<a href="docs/screenshots/bar.png"><img src="docs/screenshots/bar.png" alt="Bar page"></a><br>
-<b>Bar</b><br>
-Position, transparency, which widget the centre is anchored on, and which
-widgets sit left, centre and right — moved, added, disabled and spaced out.
-</td>
-<td width="50%" valign="top">
-<a href="docs/screenshots/windows.png"><img src="docs/screenshots/windows.png" alt="Windows page, on the general settings"></a><br>
-<b>Windows</b><br>
-Gaps, borders, rounding, snapping, opacity, dimming and animations. The
-tiling layout — dwindle, master or scrolling — and how each one splits. And
-window groups: the tab bar's height, titles, rounding and gradients.
-</td>
-</tr>
-<tr>
-<td width="50%" valign="top">
-<a href="docs/screenshots/workspaces.png"><img src="docs/screenshots/workspaces.png" alt="Workspaces page"></a><br>
-<b>Workspaces</b><br>
-Bind an application to a workspace or a display, open it there in the
-background, floating, pinned or fullscreen, start it when you log in, keep
-the screen awake or hide it from screen sharing. And set up the workspaces
-themselves: name, display, layout, kept when empty, borderless.
-</td>
-<td width="50%" valign="top">
-<a href="docs/screenshots/keyboard.png"><img src="docs/screenshots/keyboard.png" alt="Keyboard page, on the keybindings"></a><br>
-<b>Keyboard</b><br>
-Layouts, variant, options and repeat rate, with one keyboard allowed to
-differ from the rest. Browse every keybinding you have, add your own, turn
-Omarchy's off and put them back, with no Lua. And your <code>~/.XCompose</code>
-sequences as a list you can add to and remove from.
-</td>
-</tr>
-<tr>
-<td width="50%" valign="top">
-<a href="docs/screenshots/mouse-and-touchpad.png"><img src="docs/screenshots/mouse-and-touchpad.png" alt="Mouse and touchpad page"></a><br>
-<b>Mouse & touchpad</b><br>
-Sensitivity, acceleration, focus follows mouse, natural scrolling, tap to
-click, two-finger right click, disable while typing and scroll speed — and
-one device can differ from the rest.
-</td>
-<td width="50%" valign="top">
-<a href="docs/screenshots/sound.png"><img src="docs/screenshots/sound.png" alt="Sound page"></a><br>
-<b>Sound</b><br>
-Volume and mute for output and input, and which device each one uses.
-</td>
-</tr>
-<tr>
-<td width="50%" valign="top">
-<a href="docs/screenshots/displays.png"><img src="docs/screenshots/displays.png" alt="Displays page"></a><br>
-<b>Displays</b><br>
-Resolution, refresh rate, scale, rotation, variable refresh, HDR where the
-display supports it, mirroring, brightness, and which screens are on — plus
-the arrangement, dragged into the shape they are on the desk. Settings follow
-the screen rather than the socket, so a display you have configured keeps
-what it was given when you plug it back in.
 </td>
 <td width="50%" valign="top"></td>
 </tr>
@@ -255,7 +172,7 @@ out of. And hopefully someone else finds it useful too.
 ## Install
 
 ```sh
-omarchy plugin add https://github.com/twiking/omacontrol.git --enable
+omarchy plugin add https://github.com/T3mon/omacontrol.git --enable
 ```
 
 ## Migrate from OmaSettings
@@ -263,7 +180,7 @@ omarchy plugin add https://github.com/twiking/omacontrol.git --enable
 Install OmaControl beside it and restart the shell:
 
 ```sh
-omarchy plugin add https://github.com/twiking/omacontrol.git --enable
+omarchy plugin add https://github.com/T3mon/omacontrol.git --enable
 omarchy restart shell
 ```
 
