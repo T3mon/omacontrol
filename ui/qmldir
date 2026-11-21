@@ -47,3 +47,5 @@ TextRow TextRow.qml
 ToggleTile ToggleTile.qml
 WidgetRow WidgetRow.qml
 WifiRow WifiRow.qml
+NightTimeline NightTimeline.qml
+WarmthRow WarmthRow.qml
