@@ -44,6 +44,9 @@ setting_current() {
     nightlight-on) nightlight_schedule_get on ;;
     nightlight-off) nightlight_schedule_get off ;;
     nightlight-temp) nightlight_schedule_get temperature ;;
+    nightlight-gradual) nightlight_schedule_get gradual ;;
+    nightlight-deep) nightlight_schedule_get deep ;;
+    nightlight-ramp) nightlight_schedule_get ramp ;;
     *) return 1 ;;
   esac
 }
@@ -178,7 +181,7 @@ set_key_apply() {
         # left holding our stdout keeps bin/omacontrol's output open for ever.
         [[ $(nightlight_enabled) == "$value" ]] || omarchy-toggle-nightlight >/dev/null 2>&1
       fi ;;
-    nightlight-schedule|nightlight-on|nightlight-off|nightlight-temp)
+    nightlight-schedule|nightlight-on|nightlight-off|nightlight-temp|nightlight-gradual|nightlight-deep|nightlight-ramp)
       nightlight_schedule_set "${key#nightlight-}" "$value" ;;
     bar-position)
       case $value in

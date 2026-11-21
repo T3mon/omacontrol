@@ -68,7 +68,8 @@ image on the screensaver and the About screen.
 <a href="docs/screenshots/night-light.png"><img src="docs/screenshots/night-light.png" alt="Night light page"></a><br>
 <b>Night light</b><br>
 Warm the screen now, or on a daily schedule: when it turns on, when it turns
-off, and how warm it gets.
+off, and how warm it gets — or let it grow warmer through the night, from a
+start warmth to a deepest one over as long as you choose.
 </td>
 </tr>
 </table>

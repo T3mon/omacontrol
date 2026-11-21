@@ -9,6 +9,9 @@ Ui.SectionBody {
 
   readonly property var schedule: app.nightlightSchedule
   readonly property bool scheduled: schedule.enabled === true
+  readonly property bool gradual: schedule.gradual === true
+
+  function kelvin(next) { return Math.round(next / 100) * 100 }
 
   function times(current) {
     var out = []
@@ -65,17 +68,58 @@ Ui.SectionBody {
     }
 
     Ui.NumberRow {
-      label: "Warmth"
+      label: page.gradual ? "Warmth at the start" : "Warmth"
       description: "Lower is warmer. The manual switch always uses 4000 K."
       enabled: page.scheduled
       value: page.schedule.temperature !== undefined ? Number(page.schedule.temperature) : 4000
-      from: 2500
-      to: 6000
+      from: 2000
+      to: 6500
       step: 100
       suffix: " K"
-      onCommitted: function(next) { page.app.set("nightlight-temp", next) }
+      onCommitted: function(next) { page.app.set("nightlight-temp", page.kelvin(next)) }
       changed: page.app.isChanged("nightlight-temp")
       onResetRequested: page.app.resetSetting("nightlight-temp")
+    }
+  }
+
+  Ui.SettingGroup {
+    title: "Through the night"
+
+    Ui.SwitchRow {
+      label: "Change gradually"
+      description: "Moves from the start warmth to the deepest one in small steps after it turns on."
+      enabled: page.scheduled
+      checked: page.gradual
+      onRequested: function(next) { page.app.set("nightlight-gradual", next ? "true" : "false") }
+      changed: page.app.isChanged("nightlight-gradual")
+      onResetRequested: page.app.resetSetting("nightlight-gradual")
+    }
+
+    Ui.NumberRow {
+      label: "Deepest warmth"
+      enabled: page.scheduled && page.gradual
+      value: page.schedule.deep !== undefined ? Number(page.schedule.deep) : 3000
+      from: 2000
+      to: 6500
+      step: 100
+      suffix: " K"
+      onCommitted: function(next) { page.app.set("nightlight-deep", page.kelvin(next)) }
+      changed: page.app.isChanged("nightlight-deep")
+      onResetRequested: page.app.resetSetting("nightlight-deep")
+    }
+
+    Ui.NumberRow {
+      label: "Reach it after"
+      description: "Held from then until the night light turns off."
+      enabled: page.scheduled && page.gradual
+      value: page.schedule.ramp !== undefined ? Number(page.schedule.ramp) : 180
+      from: 30
+      to: 600
+      step: 30
+      suffix: " min"
+      onCommitted: function(next) { page.app.set("nightlight-ramp", Math.max(30, Math.round(next / 30) * 30)) }
+      changed: page.app.isChanged("nightlight-ramp")
+      onResetRequested: page.app.resetSetting("nightlight-ramp")
     }
   }
 }
