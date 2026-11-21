@@ -266,6 +266,7 @@ render_managed_lua() {
     ' <<<"$store"
 
     render_extras_lua
+    render_nightlight_lua
     render_window_rules_lua
     render_workspace_setups_lua
 

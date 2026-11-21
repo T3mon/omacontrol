@@ -78,6 +78,8 @@ Item {
   readonly property var hypr: state.hypr !== undefined ? state.hypr : ({})
   readonly property var barState: state.bar !== undefined ? state.bar : ({})
   readonly property var idleState: state.idle !== undefined ? state.idle : ({})
+  readonly property bool nightlightOn: state.nightlight === true
+  readonly property var nightlightSchedule: state.nightlightSchedule !== undefined ? state.nightlightSchedule : ({})
   readonly property var monitors: state.monitors !== undefined ? state.monitors : []
   readonly property var composeEntries: state.compose !== undefined ? state.compose : []
   readonly property var plugins: state.plugins !== undefined ? state.plugins : []
@@ -1480,6 +1482,7 @@ Item {
     if (name === "font") return ["font", "hyprChanged"]
     if (name === "text-scale") return ["textScale", "hyprChanged"]
     if (name === "nightlight") return ["nightlight"]
+    if (name.indexOf("nightlight-") === 0) return ["nightlightSchedule", "nightlight", "hyprChanged"]
     // A theme moves more than it is asked to — colours, fonts, the bar — so
     // it is left to the whole read rather than guessed at in parts.
     if (name === "theme") return []
@@ -1642,12 +1645,15 @@ Item {
       { id: "net", label: "Network", icon: "\uf1eb", pages: ["network"] },
       { id: "bt", label: "Bluetooth", icon: "\uf293", pages: ["bluetooth"] }
     ] },
+    { title: "Visual", items: [
+      { id: "idle", label: "Idle & Lock", icon: "\uf023", pages: ["idle", "branding"] },
+      { id: "night", label: "Night light", icon: "\uf186", pages: ["nightlight"] }
+    ] },
     { title: "System", items: [
       // A bolt: the page is the battery and the profile the machine runs at,
       // which a desktop has too. A power symbol read as shutting the machine
       // down, and a battery promised a page a desktop does not get.
       { id: "pwr", label: "Power", icon: "\uf0e7", pages: ["power"] },
-      { id: "idle", label: "Idle & Lock", icon: "\uf023", pages: ["idle", "branding"] },
       { id: "security", label: "Security", icon: "\uf132", pages: ["security"] },
       { id: "disk", label: "Storage", icon: "\uf0a0", pages: ["disk"] },
       { id: "proc", label: "Processes", icon: "\uf080", pages: ["processes"] },
@@ -1715,6 +1721,7 @@ Item {
     "apps.tmux": "Tmux",
     "apps.nvim": "Neovim",
     "branding": "Branding",
+    "nightlight": "Night light",
     "omacontrol": "OmaControl settings"
   })
 
@@ -1794,6 +1801,7 @@ Item {
     case "security": return "sections/SecuritySection.qml"
     case "idle": return "sections/IdleSection.qml"
     case "branding": return "sections/BrandingSection.qml"
+    case "nightlight": return "sections/NightLightSection.qml"
     case "plugins": return "sections/PluginsSection.qml"
     case "datetime": return "sections/DateTimeSection.qml"
     case "network": return "sections/NetworkSection.qml"

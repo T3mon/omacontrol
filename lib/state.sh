@@ -119,6 +119,7 @@ state_slice() {
     themes) jq -cn --argjson v "$(state_themes)" '{ themes: $v }' ;;
     fonts) jq -cn --argjson v "$(state_fonts)" '{ fonts: $v }' ;;
     nightlight) jq -cn --argjson v "$(nightlight_enabled)" '{ nightlight: $v }' ;;
+    nightlightSchedule) jq -cn --argjson v "$(nightlight_schedule_state)" '{ nightlightSchedule: $v }' ;;
 
     hypr) jq -cn --argjson v "$(state_hypr)" '{ hypr: $v }' ;;
     hyprChanged) jq -cn --argjson v "$(state_changed)" '{ hyprChanged: $v }' ;;
@@ -185,7 +186,7 @@ state() {
   # Named slices answer on their own; with nothing named, the whole document.
   if (( $# > 0 )); then state_slices "$@"; return; fi
 
-  local cfg themes fonts theme font nightlight hypr hyprchanged searchindex monitors compose plugins pluginupdates selfupdate agents groups iconfonts datetime herdr textscale workspaces branding
+  local cfg themes fonts theme font nightlight nightlightschedule hypr hyprchanged searchindex monitors compose plugins pluginupdates selfupdate agents groups iconfonts datetime herdr textscale workspaces branding
   cfg=$(read_shell_json)
 
   # Before the block, both of them: this is the one part of a state read that
@@ -201,6 +202,7 @@ state() {
   par_run font state_font
   par_run textscale state_textscale
   par_run nightlight nightlight_enabled
+  par_run nightlightschedule nightlight_schedule_state
   par_run hypr state_hypr
   par_run hyprchanged state_changed
   par_run monitors state_monitors
@@ -235,6 +237,7 @@ state() {
   font=$(par_get font)
   textscale=$(par_get textscale)
   nightlight=$(par_get nightlight false)
+  nightlightschedule=$(par_get nightlightschedule '{}')
   hypr=$(par_get hypr '{}')
   hyprchanged=$(par_get hyprchanged '[]')
   monitors=$(par_get monitors '[]')
@@ -299,6 +302,7 @@ state() {
     --arg theme "$theme" \
     --arg font "$font" \
     --argjson nightlight "${nightlight:-false}" \
+    --argjson nightlightSchedule "${nightlightschedule:-{\}}" \
     --argjson hypr "${hypr:-{\}}" \
     --argjson hyprChanged "${hyprchanged:-[]}" \
     --argjson searchIndex "${searchindex:-{\}}" \
@@ -327,6 +331,7 @@ state() {
       font: $font,
       fonts: $fonts,
       nightlight: $nightlight,
+      nightlightSchedule: $nightlightSchedule,
       textScale: (($textScale | tonumber?) // 1),
       bar: '"$BAR_STATE_JQ"',
       idle: {

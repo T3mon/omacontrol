@@ -40,6 +40,10 @@ setting_current() {
         <<<"$(read_shell_json)" ;;
     idle-screensaver) jq -r '.idle.screensaver // empty' <<<"$(read_shell_json)" ;;
     idle-lock) jq -r '.idle.lock // empty' <<<"$(read_shell_json)" ;;
+    nightlight-schedule) nightlight_schedule_get enabled ;;
+    nightlight-on) nightlight_schedule_get on ;;
+    nightlight-off) nightlight_schedule_get off ;;
+    nightlight-temp) nightlight_schedule_get temperature ;;
     *) return 1 ;;
   esac
 }
@@ -174,6 +178,8 @@ set_key_apply() {
         # left holding our stdout keeps bin/omacontrol's output open for ever.
         [[ $(nightlight_enabled) == "$value" ]] || omarchy-toggle-nightlight >/dev/null 2>&1
       fi ;;
+    nightlight-schedule|nightlight-on|nightlight-off|nightlight-temp)
+      nightlight_schedule_set "${key#nightlight-}" "$value" ;;
     bar-position)
       case $value in
         top|bottom|left|right) omarchy bar position "$value" ;;

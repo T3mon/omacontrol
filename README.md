@@ -53,6 +53,26 @@ this one.
 </tr>
 </table>
 
+### Visual
+
+<table>
+<tr>
+<td width="50%" valign="top">
+<a href="docs/screenshots/idle-and-lock.png"><img src="docs/screenshots/idle-and-lock.png" alt="Idle and Lock page"></a><br>
+<b>Idle & Lock</b><br>
+How long before the screensaver starts and the screen locks, and the
+animation shown at start-up and while unlocking. Plus branding: the text or
+image on the screensaver and the About screen.
+</td>
+<td width="50%" valign="top">
+<a href="docs/screenshots/night-light.png"><img src="docs/screenshots/night-light.png" alt="Night light page"></a><br>
+<b>Night light</b><br>
+Warm the screen now, or on a daily schedule: when it turns on, when it turns
+off, and how warm it gets.
+</td>
+</tr>
+</table>
+
 ### System
 
 <table>
@@ -64,43 +84,34 @@ The battery's charge, health and charge cycles, and the power profile to run
 at on battery and plugged in.
 </td>
 <td width="50%" valign="top">
-<a href="docs/screenshots/idle-and-lock.png"><img src="docs/screenshots/idle-and-lock.png" alt="Idle and Lock page"></a><br>
-<b>Idle & Lock</b><br>
-How long before the screensaver starts and the screen locks, and the
-animation shown at start-up and while unlocking. Plus branding: the text or
-image on the screensaver and the About screen.
-</td>
-</tr>
-<tr>
-<td width="50%" valign="top">
 <a href="docs/screenshots/security.png"><img src="docs/screenshots/security.png" alt="Security page"></a><br>
 <b>Security</b><br>
 Which incoming connections the firewall lets in, from where, and what is
 listening behind them. Set up a fingerprint reader, a FIDO2 key or the SSH
 server.
 </td>
+</tr>
+<tr>
 <td width="50%" valign="top">
 <a href="docs/screenshots/storage.png"><img src="docs/screenshots/storage.png" alt="Storage page"></a><br>
 <b>Storage</b><br>
 What is holding the space, every mount and how full it is, swap, the drive's
 SMART health, and your snapshots. Mount a stick, or take a snapshot.
 </td>
-</tr>
-<tr>
 <td width="50%" valign="top">
 <a href="docs/screenshots/processes.png"><img src="docs/screenshots/processes.png" alt="Processes page"></a><br>
 <b>Processes</b><br>
 Per-core CPU, memory, load, what is heaviest right now, and every process as
 a tree. End something without leaving for a terminal.
 </td>
+</tr>
+<tr>
 <td width="50%" valign="top">
 <a href="docs/screenshots/date-and-time.png"><img src="docs/screenshots/date-and-time.png" alt="Date and Time page"></a><br>
 <b>Date & Time</b><br>
 The timezone, and whether the clock is synchronised — with a resync when it
 is not.
 </td>
-</tr>
-<tr>
 <td width="50%" valign="top">
 <a href="docs/screenshots/about.png"><img src="docs/screenshots/about.png" alt="About page"></a><br>
 <b>About</b><br>
@@ -108,7 +119,6 @@ What this machine is — model, CPU, GPU, memory, disk, kernel, compositor —
 as one block you can copy into a bug report. When it was last updated, and
 the release channel it follows.
 </td>
-<td width="50%" valign="top"></td>
 </tr>
 </table>
 
